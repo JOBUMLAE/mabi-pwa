@@ -47,3 +47,28 @@ daily.addEventListener("change", () => {
 
   
 });
+
+/* 시작 화면 제어 */
+function startApp() {
+  localStorage.setItem("started", "true");
+  showApp();
+}
+
+function showApp() {
+  document.getElementById("startScreen").classList.add("hidden");
+  document.getElementById("appScreen").classList.remove("hidden");
+}
+
+/* 처음 접속 시 */
+if (localStorage.getItem("started") === "true") {
+  showApp();
+}
+
+/* 탭 전환 (기존 함수 살짝 개선) */
+function openTab(tabId, btn) {
+  document.querySelectorAll(".tab").forEach(b => b.classList.remove("active"));
+  document.querySelectorAll(".tab-content").forEach(t => t.classList.remove("active"));
+
+  document.getElementById(tabId).classList.add("active");
+  btn.classList.add("active");
+}
