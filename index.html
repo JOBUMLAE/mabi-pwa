@@ -1,55 +1,48 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>마비노기 모바일 보조</title>
-  <link rel="stylesheet" href="style.css">
-
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#3b82f6">
-</head>
 <body>
-  <h1>마비노기 모바일 보조</h1>
 
-  <section>
-  <h2>제작 계산기</h2>
+  <!-- 메인 화면 -->
+  <div id="startScreen" class="screen">
+    <img src="main.jpg" alt="메인 이미지" class="main-image">
+    <button onclick="startApp()">시작하기</button>
+  </div>
 
-  <input type="number" id="makeCount" placeholder="제작 개수">
-  <input type="number" id="materialPerOne" placeholder="1개당 필요 재료 수">
+  <!-- 앱 화면 -->
+  <div id="appScreen" class="screen hidden">
 
-  <button onclick="calcMake()">계산하기</button>
+    <h1>마비노기 모바일 보조</h1>
 
-  <p id="makeResult"></p>
-  </section>
+    <!-- 🔹 여기부터 기존 기능들 🔹 -->
 
-  <section>
-  <h2>강화 계산기</h2>
+    <!-- 제작 계산기 -->
+    <section>
+      <h2>제작 계산기</h2>
+      <input type="number" id="makeCount" placeholder="제작 개수">
+      <input type="number" id="materialPerOne" placeholder="1개당 필요 재료 수">
+      <button onclick="calcMake()">계산하기</button>
+      <p id="makeResult"></p>
+    </section>
 
-  <input type="number" id="startLevel" placeholder="현재 강화 단계">
-  <input type="number" id="targetLevel" placeholder="목표 강화 단계">
-  <input type="number" id="costPerTry" placeholder="1회 강화 비용">
+    <!-- 물물교환 -->
+    <section>
+      <h2>물물교환</h2>
 
-  <button onclick="calcEnhance()">강화 비용 계산</button>
+      <div class="tabs">
+        <button class="tab active" onclick="openTab('dailyTab', this)">일일</button>
+        <button class="tab" onclick="openTab('weeklyTab', this)">주간</button>
+      </div>
 
-  <p id="enhanceResult"></p>
-  </section>
-  
+      <div id="dailyTab" class="tab-content active">
+        <label><input type="checkbox" data-key="daily_1"> 티르코네일</label>
+        <label><input type="checkbox" data-key="daily_2"> 던바튼</label>
+      </div>
 
-  <section>
-    <h2>일일 체크</h2>
-    <label>
-      <input type="checkbox" id="daily">
-      던전 완료
-    </label>
-  </section>
+      <div id="weeklyTab" class="tab-content">
+        <label><input type="checkbox" data-key="weekly_1"> 상급 교환</label>
+        <label><input type="checkbox" data-key="weekly_2"> 희귀 교환</label>
+      </div>
+    </section>
+
+  </div>
 
   <script src="app.js"></script>
-  <script>
-  if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("./sw.js");
-  }
-  </script>
-
 </body>
-</html>
