@@ -1,4 +1,5 @@
 function startApp() {
+  console.log("showApp 실행됨");
   const name = document.getElementById("characterName").value.trim();
 
   if (!name) {
@@ -111,3 +112,4 @@ function calcEnhance() {
   document.getElementById("enhanceResult").innerText =
     `총 강화 비용: ${totalCost.toLocaleString()} 골드`;
 }
+
