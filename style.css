@@ -1,4 +1,28 @@
 /* ===== 마비노기 모바일 감성 UI ===== */
+/* 화면 전환 */
+.screen {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hidden {
+  display: none;
+}
+
+/* 메인 화면 */
+#startScreen {
+  align-items: center;
+  text-align: center;
+}
+
+.main-image {
+  width: 100%;
+  max-width: 320px;
+  margin-bottom: 24px;
+  border-radius: 18px;
+}
 
 * {
   box-sizing: border-box;
@@ -99,3 +123,4 @@ input[type="checkbox"] {
   height: 22px;
   accent-color: #5fbf93;
 }
+
