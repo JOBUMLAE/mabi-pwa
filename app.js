@@ -1,3 +1,78 @@
+function startApp() {
+  const name = document.getElementById("characterName").value.trim();
+
+  if (!name) {
+    alert("캐릭터 이름을 입력해 주세요.");
+    return;
+  }
+
+  localStorage.setItem("currentCharacter", name);
+  localStorage.setItem("started", "true");
+
+  showApp();
+}
+
+function showApp() {
+  const name = localStorage.getItem("currentCharacter");
+
+  document.getElementById("startScreen").classList.add("hidden");
+  document.getElementById("appScreen").classList.remove("hidden");
+
+  document.getElementById("currentCharacter").innerText = ` (${name})`;
+
+  // 체크리스트 초기화
+  if (typeof initChecklist === "function") {
+    initChecklist();
+  }
+}
+
+/* 새로고침 시 자동 진입 */
+if (localStorage.getItem("started") === "true") {
+  showApp();
+}
+
+
+// 체크 상태 저장
+const daily = document.getElementById("daily");
+daily.checked = localStorage.getItem("daily") === "true";
+
+daily.addEventListener("change", () => {
+  localStorage.setItem("daily", daily.checked);
+
+  
+});
+
+/* 탭 전환 (기존 함수 살짝 개선) */
+function openTab(tabId, btn) {
+  document.querySelectorAll(".tab").forEach(b => b.classList.remove("active"));
+  document.querySelectorAll(".tab-content").forEach(t => t.classList.remove("active"));
+
+  document.getElementById(tabId).classList.add("active");
+  btn.classList.add("active");
+}
+
+/* =========================
+   체크리스트 저장 (캐릭터별)
+========================= */
+
+function initChecklist() {
+  const character = localStorage.getItem("currentCharacter");
+  if (!character) return;
+
+  document.querySelectorAll("input[type=checkbox]").forEach(box => {
+    const key = `${character}_${box.dataset.key}`;
+
+    // 저장된 상태 불러오기
+    box.checked = localStorage.getItem(key) === "true";
+
+    // 변경 시 저장
+    box.addEventListener("change", () => {
+      localStorage.setItem(key, box.checked);
+    });
+  });
+}
+
+
 // 제작 계산기
 function calcMake() {
   const count = Number(document.getElementById("makeCount").value);
@@ -36,76 +111,3 @@ function calcEnhance() {
   document.getElementById("enhanceResult").innerText =
     `총 강화 비용: ${totalCost.toLocaleString()} 골드`;
 }
-
-
-// 체크 상태 저장
-const daily = document.getElementById("daily");
-daily.checked = localStorage.getItem("daily") === "true";
-
-daily.addEventListener("change", () => {
-  localStorage.setItem("daily", daily.checked);
-
-  
-});
-
-/* 시작 화면 제어 */
-function startApp() {
-  const name = document.getElementById("characterName").value.trim();
-
-  if (!name) {
-    alert("캐릭터 이름을 입력해 주세요.");
-    return;
-  }
-
-  localStorage.setItem("currentCharacter", name);
-  localStorage.setItem("started", "true");
-
-  showApp();
-}
-
-function showApp() {
-  const name = localStorage.getItem("currentCharacter");
-
-  document.getElementById("startScreen").classList.add("hidden");
-  document.getElementById("appScreen").classList.remove("hidden");
-
-  document.getElementById("currentCharacter").innerText = ` (${name})`;
-
-  initChecklist();
-}
-
-/* 자동 진입 */
-if (localStorage.getItem("started") === "true") {
-  showApp();
-}
-
-/* 탭 전환 (기존 함수 살짝 개선) */
-function openTab(tabId, btn) {
-  document.querySelectorAll(".tab").forEach(b => b.classList.remove("active"));
-  document.querySelectorAll(".tab-content").forEach(t => t.classList.remove("active"));
-
-  document.getElementById(tabId).classList.add("active");
-  btn.classList.add("active");
-}
-
-/* =========================
-   체크리스트 저장 (캐릭터별)
-========================= */
-
-function initChecklist() {
-  const character = localStorage.getItem("currentCharacter");
-  if (!character) return;
-
-  document.querySelectorAll("input[type=checkbox]").forEach(box => {
-    const key = `${character}_${box.dataset.key}`;
-
-    // 저장된 상태 불러오기
-    box.checked = localStorage.getItem(key) === "true";
-
-    // 변경 시 저장
-    box.addEventListener("change", () => {
-      localStorage.setItem(key, box.checked);
-    });
-  });
-}
-
