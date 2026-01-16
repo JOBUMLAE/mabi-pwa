@@ -41,6 +41,18 @@ if (localStorage.getItem("started") === "true") {
   showApp();
 }
 
+/*  메인으로 가 */
+function goToStart() {
+  const startScreen = document.getElementById("startScreen");
+  const appScreen = document.getElementById("appScreen");
+
+  if (!startScreen || !appScreen) return;
+
+  appScreen.classList.add("hidden");
+  startScreen.classList.remove("hidden");
+}
+
+
 /* =========================
    탭 전환
 ========================= */
@@ -112,3 +124,4 @@ function calcMake() {
    (디버그용 – 필요 없으면 삭제 가능)
 ========================= */
 // console.log("app.js 정상 로드됨");
+
