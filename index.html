@@ -1,62 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>마비노기 모바일 보조 앱</title>
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#6fbf8a">
+
+  <!-- 아이콘 -->
+  <link rel="icon" href="icon-192.png">
+  <link rel="apple-touch-icon" href="icon-192.png">
+
+  <!-- 스타일 -->
+  <link rel="stylesheet" href="style.css?v=20260116_1">
+</head>
 <body>
 
-  <!-- 🔹 메인 화면 -->
+  <!-- =====================
+       메인 시작 화면
+  ====================== -->
   <div id="startScreen" class="screen">
-    <div class="header-card">
-      <img src="main.jpg" alt="메인 이미지">
-    </div>
+    <img src="main.png" alt="메인 이미지" class="main-image">
+
+    <h1 class="title">마비노기 모바일</h1>
 
     <input
       type="text"
       id="characterName"
       placeholder="캐릭터 이름 입력"
-    >
-<p>버전 테스트</p>
-    <button onclick="startApp()">시작하기</button>
+      autocomplete="off"
+    />
+
+    <button class="primary-btn" onclick="startApp()">
+      시작하기
+    </button>
   </div>
 
-  <!-- 🔹 앱 화면 (시작하기 후에만 보임) -->
+  <!-- =====================
+       앱 화면
+  ====================== -->
   <div id="appScreen" class="screen hidden">
 
-    <h1>
-      마비노기 모바일 보조
-      <span id="currentCharacter"></span>
-    </h1>
+    <!-- 상단 -->
+    <header class="app-header">
+      <h2>물물교환 체크리스트<span id="currentCharacter"></span></h2>
+    </header>
 
-    <!-- ⬇⬇⬇ 여기부터 기존에 만든 기능들 전부 ⬇⬇⬇ -->
+    <!-- 탭 버튼 -->
+    <nav class="tabs">
+      <button class="tab active" onclick="openTab('dailyTab', this)">일일</button>
+      <button class="tab" onclick="openTab('weeklyTab', this)">주간</button>
+      <button class="tab" onclick="openTab('toolTab', this)">도구</button>
+    </nav>
 
-    <!-- 제작 계산기 -->
-    <section>
-      <h2>제작 계산기</h2>
-      <input type="number" id="makeCount" placeholder="제작 개수">
-      <input type="number" id="materialPerOne" placeholder="1개당 필요 재료 수">
-      <button onclick="calcMake()">계산하기</button>
+    <!-- =====================
+         일일 탭
+    ====================== -->
+    <section id="dailyTab" class="tab-content active">
+      <label>
+        <input type="checkbox" data-key="daily_trade_1">
+        일일 물물교환 1
+      </label>
+      <label>
+        <input type="checkbox" data-key="daily_trade_2">
+        일일 물물교환 2
+      </label>
+    </section>
+
+    <!-- =====================
+         주간 탭
+    ====================== -->
+    <section id="weeklyTab" class="tab-content">
+      <label>
+        <input type="checkbox" data-key="weekly_trade_1">
+        주간 물물교환 1
+      </label>
+      <label>
+        <input type="checkbox" data-key="weekly_trade_2">
+        주간 물물교환 2
+      </label>
+    </section>
+
+    <!-- =====================
+         도구 탭
+    ====================== -->
+    <section id="toolTab" class="tab-content">
+      <h3>제작 계산기</h3>
+
+      <input
+        type="number"
+        id="makeCount"
+        placeholder="제작 개수"
+      />
+      <input
+        type="number"
+        id="materialPerOne"
+        placeholder="개당 필요 재료"
+      />
+
+      <button onclick="calcMake()">계산</button>
+
       <p id="makeResult"></p>
     </section>
 
-    <!-- 물물교환 -->
-    <section>
-      <h2>물물교환</h2>
-
-      <div class="tabs">
-        <button class="tab active" onclick="openTab('dailyTab', this)">일일</button>
-        <button class="tab" onclick="openTab('weeklyTab', this)">주간</button>
-      </div>
-
-      <div id="dailyTab" class="tab-content active">
-        <label><input type="checkbox" data-key="daily_1"> 티르코네일</label>
-        <label><input type="checkbox" data-key="daily_2"> 던바튼</label>
-      </div>
-
-      <div id="weeklyTab" class="tab-content">
-        <label><input type="checkbox" data-key="weekly_1"> 상급 교환</label>
-        <label><input type="checkbox" data-key="weekly_2"> 희귀 교환</label>
-      </div>
-    </section>
-
   </div>
 
-  <script src="app.js?v=1"></script>
+  <!-- 스크립트 -->
+  <script src="app.js?v=20260116_1"></script>
 </body>
-
-
+</html>
