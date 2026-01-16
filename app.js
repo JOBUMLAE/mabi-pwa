@@ -70,6 +70,8 @@ function showApp() {
   document.getElementById("appScreen").classList.remove("hidden");
 
   document.getElementById("currentCharacter").innerText = ` (${name})`;
+
+  initChecklist();
 }
 
 /* 자동 진입 */
@@ -84,5 +86,26 @@ function openTab(tabId, btn) {
 
   document.getElementById(tabId).classList.add("active");
   btn.classList.add("active");
+}
+
+/* =========================
+   체크리스트 저장 (캐릭터별)
+========================= */
+
+function initChecklist() {
+  const character = localStorage.getItem("currentCharacter");
+  if (!character) return;
+
+  document.querySelectorAll("input[type=checkbox]").forEach(box => {
+    const key = `${character}_${box.dataset.key}`;
+
+    // 저장된 상태 불러오기
+    box.checked = localStorage.getItem(key) === "true";
+
+    // 변경 시 저장
+    box.addEventListener("change", () => {
+      localStorage.setItem(key, box.checked);
+    });
+  });
 }
 
