@@ -35,7 +35,6 @@ if (localStorage.getItem("started") === "true") {
 
 // 체크 상태 저장
 const daily = document.getElementById("daily");
-daily.checked = localStorage.getItem("daily") === "true";
 
 daily.addEventListener("change", () => {
   localStorage.setItem("daily", daily.checked);
@@ -116,5 +115,6 @@ function calcEnhance() {
   document.getElementById("enhanceResult").innerText =
     `총 강화 비용: ${totalCost.toLocaleString()} 골드`;
 }
+
 
 
