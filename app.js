@@ -50,16 +50,29 @@ daily.addEventListener("change", () => {
 
 /* 시작 화면 제어 */
 function startApp() {
+  const name = document.getElementById("characterName").value.trim();
+
+  if (!name) {
+    alert("캐릭터 이름을 입력해 주세요.");
+    return;
+  }
+
+  localStorage.setItem("currentCharacter", name);
   localStorage.setItem("started", "true");
+
   showApp();
 }
 
 function showApp() {
+  const name = localStorage.getItem("currentCharacter");
+
   document.getElementById("startScreen").classList.add("hidden");
   document.getElementById("appScreen").classList.remove("hidden");
+
+  document.getElementById("currentCharacter").innerText = ` (${name})`;
 }
 
-/* 처음 접속 시 */
+/* 자동 진입 */
 if (localStorage.getItem("started") === "true") {
   showApp();
 }
@@ -72,3 +85,4 @@ function openTab(tabId, btn) {
   document.getElementById(tabId).classList.add("active");
   btn.classList.add("active");
 }
+
