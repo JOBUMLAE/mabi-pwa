@@ -25,7 +25,7 @@
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 /* 메인 화면 */
@@ -153,6 +153,7 @@ input[type="checkbox"] {
   font-size: 16px;
   text-align: center;
 }
+
 
 
 
