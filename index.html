@@ -1,15 +1,28 @@
 <body>
 
   <!-- 메인 화면 -->
+  <!-- 메인 화면 -->
   <div id="startScreen" class="screen">
     <img src="main.jpg" alt="메인 이미지" class="main-image">
+
+    <input
+      type="text"
+      id="characterName"
+      placeholder="캐릭터 이름 입력"
+    >
+
     <button onclick="startApp()">시작하기</button>
   </div>
+
 
   <!-- 앱 화면 -->
   <div id="appScreen" class="screen hidden">
 
-    <h1>마비노기 모바일 보조</h1>
+    <h1>
+      마비노기 모바일 보조
+      <span id="currentCharacter"></span>
+    </h1>
+
 
     <!-- 🔹 여기부터 기존 기능들 🔹 -->
 
@@ -46,3 +59,4 @@
 
   <script src="app.js"></script>
 </body>
+
