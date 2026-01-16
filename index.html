@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>마비노기 모바일 보조</title>
+  <link rel="stylesheet" href="style.css">
+
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#3b82f6">
+</head>
+<body>
+  <h1>마비노기 모바일 보조</h1>
+
+  <section>
+    <h2>제작 계산기</h2>
+    <input type="number" id="count" placeholder="제작 개수">
+    <button onclick="calc()">계산</button>
+    <p id="result"></p>
+  </section>
+
+  <section>
+    <h2>일일 체크</h2>
+    <label>
+      <input type="checkbox" id="daily">
+      던전 완료
+    </label>
+  </section>
+
+  <script src="app.js"></script>
+  <script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("./sw.js");
+  }
+  </script>
+
+</body>
+</html>
