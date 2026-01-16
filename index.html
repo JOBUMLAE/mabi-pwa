@@ -13,11 +13,28 @@
   <h1>마비노기 모바일 보조</h1>
 
   <section>
-    <h2>제작 계산기</h2>
-    <input type="number" id="count" placeholder="제작 개수">
-    <button onclick="calc()">계산</button>
-    <p id="result"></p>
+  <h2>제작 계산기</h2>
+
+  <input type="number" id="makeCount" placeholder="제작 개수">
+  <input type="number" id="materialPerOne" placeholder="1개당 필요 재료 수">
+
+  <button onclick="calcMake()">계산하기</button>
+
+  <p id="makeResult"></p>
   </section>
+
+  <section>
+  <h2>강화 계산기</h2>
+
+  <input type="number" id="startLevel" placeholder="현재 강화 단계">
+  <input type="number" id="targetLevel" placeholder="목표 강화 단계">
+  <input type="number" id="costPerTry" placeholder="1회 강화 비용">
+
+  <button onclick="calcEnhance()">강화 비용 계산</button>
+
+  <p id="enhanceResult"></p>
+  </section>
+  
 
   <section>
     <h2>일일 체크</h2>
