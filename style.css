@@ -1,0 +1,101 @@
+/* ===== 마비노기 모바일 감성 UI ===== */
+
+* {
+  box-sizing: border-box;
+  font-family: "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 16px;
+  background: linear-gradient(180deg, #f0f7f2, #e6f0ea);
+  color: #2f3e35;
+}
+
+/* 타이틀 */
+h1 {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #3a5f4b;
+  letter-spacing: 0.5px;
+}
+
+h2 {
+  font-size: 17px;
+  margin-bottom: 12px;
+  color: #4f7a63;
+}
+
+/* 카드 */
+section {
+  background: #ffffffcc;
+  backdrop-filter: blur(4px);
+  border-radius: 18px;
+  padding: 16px;
+  margin-bottom: 18px;
+  box-shadow: 0 6px 16px rgba(60, 120, 90, 0.15);
+  border: 1px solid #dbe9df;
+}
+
+/* 입력창 */
+input[type="number"],
+input[type="text"] {
+  width: 100%;
+  padding: 14px;
+  font-size: 16px;
+  border-radius: 14px;
+  border: 1px solid #cfe0d5;
+  background: #f8fcfa;
+  margin-bottom: 12px;
+  color: #2f3e35;
+}
+
+input::placeholder {
+  color: #9bb3a6;
+}
+
+/* 버튼 */
+button {
+  width: 100%;
+  padding: 14px;
+  font-size: 16px;
+  border-radius: 16px;
+  border: none;
+  background: linear-gradient(180deg, #7bcfa2, #4fb48a);
+  color: #ffffff;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 10px rgba(79, 180, 138, 0.4);
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+/* 결과 */
+#result {
+  margin-top: 12px;
+  padding: 12px;
+  background: #eef7f1;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #3a5f4b;
+  border: 1px dashed #b9d7c7;
+}
+
+/* 체크박스 */
+label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  color: #355848;
+}
+
+input[type="checkbox"] {
+  width: 22px;
+  height: 22px;
+  accent-color: #5fbf93;
+}
