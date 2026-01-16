@@ -49,8 +49,12 @@ function openTab(tabId, btn) {
   document.querySelectorAll(".tab-content").forEach(t => t.classList.remove("active"));
 
   document.getElementById(tabId).classList.add("active");
-  btn.classList.add("active");
+
+  if (btn) {
+    btn.classList.add("active");
+  }
 }
+
 
 /* =========================
    체크리스트 저장 (캐릭터별)
@@ -112,4 +116,5 @@ function calcEnhance() {
   document.getElementById("enhanceResult").innerText =
     `총 강화 비용: ${totalCost.toLocaleString()} 골드`;
 }
+
 
