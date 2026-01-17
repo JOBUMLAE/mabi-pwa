@@ -2,7 +2,7 @@
 /* 메인이미지 */
 .header-card {
   width: 100%;
-  height: 40px;
+  height: 140px;
   overflow: hidden;
   border-radius: 20px;
   margin-bottom: 12px;
@@ -162,6 +162,7 @@ input[type="checkbox"] {
   background: #e8f3ec;
   color: #356b4d;
 }
+
 
 
 
